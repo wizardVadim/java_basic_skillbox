@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Course</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/courses}" th:object="${course}">
+    <label for="name">Name: </label>
+    <input type="text" th:field="*{name}" id="name">
+    <div style="color:#774b9d" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">nameError</div>
+    </br>
+    <label for="teacherName">Teacher Name: </label>
+    <input type="text" th:field="*{teacherName}" id="teacherName">
+    <div style="color:#774b9d" th:if="${#fields.hasErrors('teacherName')}" th:errors="*{teacherName}">nameError</div>
+    </br>
+    <input type="submit" value="Create!"/>
+</form>
+
+<form th:method="GET" th:action="@{/people}">
+    <input type="submit" value="Cancel"/>
+</form>
+
+</body>
+</html>

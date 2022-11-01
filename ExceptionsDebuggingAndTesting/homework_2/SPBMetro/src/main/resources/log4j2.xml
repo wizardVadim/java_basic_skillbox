@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="INFO">
+    <appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+        <File name="SearchFile" fileName="logs/search.log" immediateFlush="true">
+            <Filters>
+                <MarkerFilter marker="IMPORTANT" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-4level %logger{36} - %msg%n"/>
+        </File>
+        <File name="NotFound" fileName="logs/input_errors.log" immediateFlush="true">
+            <Filters>
+                <MarkerFilter marker="ERRORUSER" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-2level %logger{36} - %msg%n"/>
+        </File>
+        <File name="ExceptionFile" fileName="logs/exceptions.log" immediateFlush="true">
+            <Filters>
+                <MarkerFilter marker="EXCEPTION" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-1level %logger{36} - %msg%n"/>
+        </File>
+
+    </appenders>
+    <loggers>
+
+
+        <root leveL="debug">
+            <appender-ref ref="SearchFile" level="info"/>
+            <appender-ref ref="NotFound" level="error"/>
+            <appender-ref ref="ExceptionFile" level="fatal"/>
+        </root>
+
+
+
+    </loggers>
+</configuration>

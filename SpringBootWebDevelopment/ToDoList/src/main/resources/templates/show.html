@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${course.getName()}">Course</title>
+</head>
+<body>
+
+<p th:text="${'Name: ' + course.getName()}">VALUE</p>
+<p th:text="${'Id: ' + course.getId()}">VALUE</p>
+<p th:text="${'Teacher Name: ' + course.getTeacherName  ()}">VALUE</p>
+<a th:href="@{/courses/{id}/edit(id=${course.getId()})}">Edit</a>
+<a href="/courses">Back</a>
+</br>
+<form th:method="DELETE" th:action="@{/courses/{id}(id=${course.getId()})}" th:object="${course}">
+    </br>
+    <input type="submit" value="Delete"/>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CourseEditor</title>
+</head>
+<body>
+
+<form th:method="PATCH" th:action="@{/courses/{id}(id=${course.getId()})}" th:object="${course}">
+    <label for="name">Name: </label>
+    <input type="text" th:field="*{name}" id="name">
+    <div style="color:#774b9d" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">nameError</div>
+    </br>
+    <label for="teacherName">Teacher Name: </label>
+    <input type="text" th:field="*{teacherName}" id="teacherName">
+    <div style="color:#774b9d" th:if="${#fields.hasErrors('teacherName')}" th:errors="*{teacherName}">nameError</div>
+    </br>
+    <input type="submit" value="Update!"/>
+</form>
+
+</body>
+</html>

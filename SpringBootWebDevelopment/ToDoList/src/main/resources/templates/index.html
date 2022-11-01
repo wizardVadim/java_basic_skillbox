@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+        <head>
+            <meta charset="UTF-8">
+            <title>Список курсов</title>
+            <link rel="shortcut icon" href="https://icon-icons.com/downloadimage.php?id=149685&root=2474/ICO/512/&file=education_books_library_icon_149685.ico"/>
+        </head>
+
+        <body>
+
+            <h1> Список курсов </h1>
+
+            </br>
+
+            <div th:each="course : ${courses}">
+                <a th:href="@{/courses/{id}(id=${course.getId()})}" th:text="${course.getName() + ', ' + course.getTeacherName()}">course</a>
+            </div>
+
+            <form th:method="GET" th:action="@{/courses/new}" th:object="${course}">
+                <input type="submit" value="Add new course"/>
+            </form>
+
+            </br>
+
+            <form th:method="DELETE" th:action="@{/courses}" th:object="${course}">
+                <input type="submit" value="Delete all courses"/>
+            </form>
+
+        </body>
+
+    </html>
